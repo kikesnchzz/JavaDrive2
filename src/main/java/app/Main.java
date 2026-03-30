@@ -16,42 +16,4 @@ public class Main {
 
         }
 
-        // gestión ficheros
-        public void cargarCliente() {
-
-        }
-
-        public void guardarCliente() {
-
-        }
-
-        public void exportarCliente(Reserva r) {
-
-        }
-
-        // Gestión de negocios
-        public void crearCliente() {
-
-        }
-
-        public void crearVehiculo() {
-
-        }
-
-        public Cliente buscarCliente(String dni) {
-            return null;
-        }
-
-        public Vehiculo buscarVehiculo (String matricula) {
-            return null;
-        }
-
-        public void listarVehiculosDisponibles() {
-
-        }
-
-        public void realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin) {
-
-        }
-
 }
