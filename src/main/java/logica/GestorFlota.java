@@ -6,7 +6,7 @@ import static app.Main.flota;
 
 public class GestorFlota {
     public void crearVehiculo() {
-        
+
     }
 
     public Vehiculo buscarVehiculo (String matricula) {
@@ -15,7 +15,6 @@ public class GestorFlota {
                 return v;
             }
         }
-
         return null;
     }
 
