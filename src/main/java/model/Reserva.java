@@ -11,9 +11,9 @@ public class Reserva {
     private LocalDate fechaFin;
 
 
-    public Reserva(int idReserva, Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio, LocalDate fechaFin) {
+    public Reserva(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio, LocalDate fechaFin) {
         super();
-        this.idReserva = idReserva;
+        this.idReserva = (idReserva++);
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         this.fechaInicio = fechaInicio;
