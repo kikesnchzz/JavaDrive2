@@ -1,5 +1,7 @@
 package model;
 
+import Excepciones.NumeroIncorrectoException;
+
 public class Coche extends Vehiculo {
     private tipoCoche tipo;
     private int numPlazas;
