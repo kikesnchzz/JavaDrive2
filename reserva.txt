@@ -1,0 +1,26 @@
+==================================================
+CONTRATO DE ALQUILER - JAVADRIVE
+==================================================
+ID RESERVA: R17156320
+FECHA EMISIÓN: 2024-05-20
+--------------------------------------------------
+DATOS DEL CLIENTE:
+Nombre: Juan Perez
+DNI: 12345678A
+Teléfono: 600111222
+--------------------------------------------------
+DATOS DEL VEHÍCULO:
+Marca y Modelo: Seat Leon
+Matrícula: 1234ABC
+Detalles: Coche Familiar, 5 plazas
+--------------------------------------------------
+PERIODO DE ALQUILER:
+Fecha de recogida: 2024-06-01
+Fecha de devolución: 2024-06-08
+Total días: 7
+--------------------------------------------------
+ESTADO: Confirmado y Pendiente de pago
+--------------------------------------------------
+Firma del cliente: Firma JavaDrive:
+____________________ ____________________
+==================================================
