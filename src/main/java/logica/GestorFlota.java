@@ -4,6 +4,7 @@ import Excepciones.NumeroIncorrectoException;
 import model.Coche;
 import model.Furgoneta;
 import model.Vehiculo;
+import model.tipoCoche;
 
 import java.util.Scanner;
 
@@ -24,32 +25,38 @@ public class GestorFlota {
         System.out.println("==========================");
         System.out.println("1. Coche");
         System.out.println("2. Furgoneta");
-        System.out.println("Introduce el número correspondiente si tiene Coche o Furgoneta");
-        int numero = sc.nextInt();
+        int numero;
+        do {
+            System.out.println("Introduce el número correspondiente si tiene Coche o Furgoneta");
+             numero = sc.nextInt();
 
-        switch (numero){
-            case 1:
-                System.out.println("Introduce el tipo de coche:");
-                String tipo = sc.nextLine();
-                System.out.println("Introduce el número de plazas:");
-                int numPlazas = sc.nextInt();
+            switch (numero) {
+                case 1:
+                    System.out.println("Introduce el tipo de coche:");
+                    String tipoStr = sc.nextLine();
+                    System.out.println("Introduce el número de plazas:");
+                    int numPlazas = sc.nextInt();
 
-                Coche coche = new Coche(matricula, marca, modelo, tipo, numPlazas);
-                flota.add(coche);
-                break;
+                    tipoCoche tipo = tipoCoche.valueOf(tipoStr);
+                    Coche coche = new Coche(matricula, marca, modelo, true, tipo, numPlazas);
+                    flota.add(coche);
+                    break;
 
-            case 2:
-                System.out.println("Introduce si es de carga (true/false):");
-                boolean esDeCarga = sc.nextBoolean();
-                sc.nextLine();
-                System.out.println("Introduce la capacidad de la furgoneta:");
-                int capacidad = sc.nextInt();
+                case 2:
+                    System.out.println("Introduce si es de carga (true/false):");
+                    boolean esDeCarga = sc.nextBoolean();
+                    sc.nextLine();
+                    System.out.println("Introduce la capacidad de la furgoneta:");
+                    int capacidad = sc.nextInt();
 
-                Furgoneta furgo = new Furgoneta(matricula, marca, modelo, esDeCarga, capacidad);
-                flota.add(furgo);
-                break;
-        }
-
+                    Furgoneta furgo = new Furgoneta(matricula, marca, modelo, true, esDeCarga, capacidad);
+                    flota.add(furgo);
+                    break;
+                default:
+                    System.out.println("Ese número no esta en el menú");
+                    break;
+            }
+        }while (numero != 2) ;
 
     }
 
