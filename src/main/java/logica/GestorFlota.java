@@ -26,6 +26,7 @@ public class GestorFlota {
         System.out.println("1. Coche");
         System.out.println("2. Furgoneta");
         int numero;
+
         do {
             System.out.println("Introduce el número correspondiente si tiene Coche o Furgoneta");
              numero = sc.nextInt();
