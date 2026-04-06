@@ -1,11 +1,55 @@
 package logica;
 
+import Excepciones.NumeroIncorrectoException;
+import model.Coche;
+import model.Furgoneta;
 import model.Vehiculo;
+
+import java.util.Scanner;
 
 import static app.Main.flota;
 
 public class GestorFlota {
-    public void crearVehiculo() {
+    public void crearVehiculo() throws NumeroIncorrectoException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Datos comunes:");
+
+        System.out.println("Introduce la matrícula:");
+        String matricula = sc.nextLine();
+        System.out.println("Introduce la marca:");
+        String marca = sc.nextLine();
+        System.out.println("Introduce el modelo:");
+        String modelo = sc.nextLine();
+
+        System.out.println("==========================");
+        System.out.println("1. Coche");
+        System.out.println("2. Furgoneta");
+        System.out.println("Introduce el número correspondiente si tiene Coche o Furgoneta");
+        int numero = sc.nextInt();
+
+        switch (numero){
+            case 1:
+                System.out.println("Introduce el tipo de coche:");
+                String tipo = sc.nextLine();
+                System.out.println("Introduce el número de plazas:");
+                int numPlazas = sc.nextInt();
+
+                Coche coche = new Coche(matricula, marca, modelo, tipo, numPlazas);
+                flota.add(coche);
+                break;
+
+            case 2:
+                System.out.println("Introduce si es de carga (true/false):");
+                boolean esDeCarga = sc.nextBoolean();
+                sc.nextLine();
+                System.out.println("Introduce la capacidad de la furgoneta:");
+                int capacidad = sc.nextInt();
+
+                Furgoneta furgo = new Furgoneta(matricula, marca, modelo, esDeCarga, capacidad);
+                flota.add(furgo);
+                break;
+        }
+
 
     }
 
