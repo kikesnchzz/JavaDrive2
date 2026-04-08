@@ -10,7 +10,9 @@ import static logica.GestorInformes.exportarTicket;
 
 public class GestorReservas {
 
+
     public static void realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin) {
+
         // 1. Cambiar estado del vehículo
         v.setDisponible(false);
 

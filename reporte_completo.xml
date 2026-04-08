@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="estilo_javadrive.xsl"?>
+<javadrive>
+  <empresa>
+    <nombre>JavaDrive S.L.</nombre>
+    <ubicacion>Sede Central - Madrid</ubicacion>
+  </empresa>
+  <flota>
+<vehiculo tipo="Coche">
+      <matricula>1234ABC</matricula>
+      <marca>Seat</marca>
+      <modelo>Leon</modelo>
+      <especifico>coche Familiar, 5 plazas</especifico>
+    </vehiculo>
+<vehiculo tipo="Coche">
+      <matricula>5678DEF</matricula>
+      <marca>Fiat</marca>
+      <modelo>500</modelo>
+      <especifico>coche Pequeño, 4 plazas</especifico>
+    </vehiculo>
+<vehiculo tipo="Coche">
+      <matricula>9012GHI</matricula>
+      <marca>Porsche</marca>
+      <modelo>911</modelo>
+      <especifico>coche Deportivo, 2 plazas</especifico>
+    </vehiculo>
+<vehiculo tipo="Furgoneta">
+      <matricula>1122JKL</matricula>
+      <marca>Ford</marca>
+      <modelo>Transit</modelo>
+      <especifico>Furgoneta de Carga: (1200 kg)</especifico>
+    </vehiculo>
+<vehiculo tipo="Furgoneta">
+      <matricula>3344MNO</matricula>
+      <marca>Volkswagen</marca>
+      <modelo>Multivan</modelo>
+      <especifico>Furgoneta de Pasajeros: (7 personas)</especifico>
+    </vehiculo>
+<vehiculo tipo="Furgoneta">
+      <matricula>5566PQR</matricula>
+      <marca>Mercedes</marca>
+      <modelo>Sprinter</modelo>
+      <especifico>Furgoneta de Carga: (3500 kg)</especifico>
+    </vehiculo>
+  </flota>
+  <clientes>
+    <cliente>
+      <dni>12345678A</dni>
+      <nombre>Juan Perez</nombre>
+      <telefono>600111222</telefono>
+    </cliente>
+    <cliente>
+      <dni>23456789B</dni>
+      <nombre>Maria Garcia</nombre>
+      <telefono>611222333</telefono>
+    </cliente>
+    <cliente>
+      <dni>34567890C</dni>
+      <nombre>Carlos Ruiz</nombre>
+      <telefono>622333444</telefono>
+    </cliente>
+    <cliente>
+      <dni>45678901D</dni>
+      <nombre>Ana Martinez</nombre>
+      <telefono>633444555</telefono>
+    </cliente>
+    <cliente>
+      <dni>56789012E</dni>
+      <nombre>Luis Fernandez</nombre>
+      <telefono>644555666</telefono>
+    </cliente>
+    <cliente>
+      <dni>67890123F</dni>
+      <nombre>Elena Blanco</nombre>
+      <telefono>655666777</telefono>
+    </cliente>
+  </clientes>
+</javadrive>
