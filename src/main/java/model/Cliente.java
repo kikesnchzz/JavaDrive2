@@ -28,9 +28,17 @@ public class Cliente {
         this.nombre = nombre;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
-        return "Cliente [ DNI: " + dni + ", Nombre: " + nombre + ", Teléfono: " + telefono +"]" ;
+        return "Datos del Cliente: Nombre: " + nombre + " DNI: " + dni + "Teléfono: " + telefono;
     }
 
 

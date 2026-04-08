@@ -33,7 +33,10 @@ public class Coche extends Vehiculo {
         this.numPlazas = plazas;
     }
 
-    public String obtenerDetllas() {
-        return "Coche: [" + tipo + "], Plazas: [" + numPlazas + "]";
+    @Override
+    public String obtenerDetalles() {
+        return "coche " + tipo + ", " + numPlazas + " plazas";
     }
+
+
 }

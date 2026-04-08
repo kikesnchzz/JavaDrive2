@@ -45,9 +45,11 @@ public abstract class Vehiculo {
         this.disponible = disponible;
     }
 
+    public abstract String obtenerDetalles();
+
     @Override
-    public String toString() {
-        return "[" +  matricula + "]" +  marca + " " +modelo +" - "+ disponible;
+    public  String toString() {
+        return "Datos del Vehículo: Marca y Modelo: " + marca + " " + modelo + "Matrícula: " + matricula + "Disponible: " +disponible;
     }
 
 

@@ -1,5 +1,6 @@
 package app;
 
+import logica.GestorInformes;
 import model.Cliente;
 import model.Reserva;
 import model.Vehiculo;

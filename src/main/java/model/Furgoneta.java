@@ -28,11 +28,11 @@ public class Furgoneta extends Vehiculo {
     }
 
     @Override
-    public String toString() {
+    public String obtenerDetalles() {
         if(esDeCarga) {
-            return "Furgoneta de Carga: (" + capacidad + " kg)";
+            return "Detalles: Furgoneta de Carga: (" + capacidad + " kg)";
         }else {
-            return "Furgoneta de Pasajeros: (" + capacidad + " personas)";
+            return "Detalles: Furgoneta de Pasajeros: (" + capacidad + " personas)";
         }
     }
 
