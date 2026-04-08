@@ -11,7 +11,7 @@ import java.util.Scanner;
 import static app.Main.flota;
 
 public class GestorFlota {
-    public void crearVehiculo() throws NumeroIncorrectoException {
+    public static void crearVehiculo() throws NumeroIncorrectoException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Datos comunes:");
 
