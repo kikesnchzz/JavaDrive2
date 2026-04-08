@@ -62,7 +62,7 @@ public class GestorFlota {
 
     }
 
-    public Vehiculo buscarVehiculo (String matricula) {
+    public static Vehiculo buscarVehiculo (String matricula) {
         for (Vehiculo v : flota) {
             if(v.getMatricula().equals(matricula)){
                 return v;
@@ -71,7 +71,7 @@ public class GestorFlota {
         return null;
     }
 
-    public void listarVehiculosDisponibles() {
+    public static void listarVehiculosDisponibles() {
         for (Vehiculo v : flota){
             System.out.println(v);
         }

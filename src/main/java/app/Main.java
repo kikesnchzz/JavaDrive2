@@ -1,6 +1,8 @@
 package app;
 
 import Excepciones.NumeroIncorrectoException;
+import logica.GestorClientes;
+import logica.GestorFlota;
 import logica.GestorInformes;
 import logica.GestorReservas;
 import model.Cliente;
@@ -35,7 +37,7 @@ public class Main {
 
                     switch (opcion) {
                             case 1:
-                                    new logica.GestorClientes().crearCliente();
+                                    GestorClientes.crearCliente();
                                     break;
                             case 2:
                                     try {
@@ -45,23 +47,23 @@ public class Main {
                                     }
                                     break;
                             case 3:
-                                    new logica.GestorReservas().realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin);
+                                    GestorReservas.realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin);
                                     break;
                             case 4:
                                     new GestorInformes().cargarDatos();
                                     break;
 
                             case 5:
-                                    new logica.GestorClientes().buscarCliente(String dni);
+                                    GestorClientes.buscarCliente(String dni);
 
                                     break;
 
                             case 6:
-                                    new logica.GestorFlota().buscarVehiculo(String matricula);
+                                    GestorFlota.buscarVehiculo(String matricula);
                                     break;
 
                             case 7:
-                                    new logica.GestorFlota().listarVehiculosDisponibles();
+                                    GestorFlota.listarVehiculosDisponibles();
                                     break;
 
                             case 8:
