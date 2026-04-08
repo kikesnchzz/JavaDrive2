@@ -18,7 +18,7 @@ public class GestorInformes {
     public static BufferedWriter bw ;
     public static PrintWriter pw;
 
-    public void cargarDatos() {
+    public static void cargarDatos() {
 
         try {
             leerDocumento("vehiculos.txt");
@@ -45,7 +45,7 @@ public class GestorInformes {
     }
     }
 
-    public void guardarDatos() {
+    public static void guardarDatos() {
             try {
                 pw = new PrintWriter(new FileWriter("vehiculos.txt"));
 

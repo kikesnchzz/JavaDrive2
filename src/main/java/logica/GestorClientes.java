@@ -11,7 +11,7 @@ public class GestorClientes {
 
 
     // Gestión de negocios
-    public void crearCliente() {
+    public static void crearCliente() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Introduce DNI: ");
