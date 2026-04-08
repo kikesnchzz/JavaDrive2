@@ -41,25 +41,53 @@ public class Main {
                                     break;
                             case 2:
                                     try {
-                                            new logica.GestorFlota().crearVehiculo();
+                                            new GestorFlota().crearVehiculo();
                                     } catch (NumeroIncorrectoException e) {
                                             System.out.println("Error: " + e.getMessage());
                                     }
                                     break;
                             case 3:
-                                    GestorReservas.realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin);
+                                    System.out.println("Dime el nombre del cliente:");
+                                    String nombreCliente = sc.nextLine();
+                                    Cliente cliente = GestorClientes.buscarCliente(nombreCliente);
+                                    if (cliente == null) {
+                                            System.out.println("Cliente no encontrado.");
+                                            break;
+                                    }
+                                    System.out.println("Dime la matrícula del vehículo:");
+                                    String matricula = sc.nextLine();
+                                    Vehiculo vehiculo = GestorFlota.buscarVehiculo(matricula);
+                                    if (vehiculo == null) {
+                                            System.out.println("Vehículo no encontrado.");
+                                            break;
+                                    }
+                                    System.out.println("Dime la fecha de inicio (YYYY-MM-DD):");
+                                    String fechaInicioStr = sc.nextLine();
+                                    System.out.println("Dime la fecha de fin (YYYY-MM-DD):");
+                                    String fechaFinStr = sc.nextLine();
+                                    LocalDate fechaInicio = LocalDate.parse(fechaInicioStr);
+                                    LocalDate fechaFin = LocalDate.parse(fechaFinStr);
+                                    GestorReservas.realizarReserva(cliente, vehiculo, fechaInicio, fechaFin);
                                     break;
                             case 4:
                                     new GestorInformes().cargarDatos();
                                     break;
 
                             case 5:
-                                    GestorClientes.buscarCliente(String dni);
+                                    System.out.println("Dime el DNI del cliente:");
+                                    String dni = sc.nextLine();
+                                    if(GestorClientes.buscarCliente(dni) == null) {
+                                            System.out.println("Cliente no encontrado.");
+                                    } else {
+                            System.out.println("Cliente encontrado: " + GestorClientes.buscarCliente(dni).getNombre());
+                                    }
 
                                     break;
 
                             case 6:
-                                    GestorFlota.buscarVehiculo(String matricula);
+                                    System.out.println("Dime la matrícula del vehículo:");
+                                     matricula = sc.nextLine();
+                                    GestorFlota.buscarVehiculo( matricula);
                                     break;
 
                             case 7:
