@@ -6,6 +6,8 @@ import model.Vehiculo;
 
 import java.time.LocalDate;
 
+import static logica.GestorInformes.exportarTicket;
+
 public class GestorReservas {
 
     public void realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin) {

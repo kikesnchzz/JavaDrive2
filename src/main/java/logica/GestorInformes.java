@@ -73,7 +73,7 @@ public class GestorInformes {
 
     }
 
-    public void exportarTicket (Reserva r) {
+    public static void exportarTicket (Reserva r) {
         try {
             String nombreArchivo = "ticket_" + r.getIdReserva() + ".txt";
 

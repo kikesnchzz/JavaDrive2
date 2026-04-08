@@ -30,6 +30,7 @@ public class GestorFlota {
         do {
             System.out.println("Introduce el número correspondiente si tiene Coche o Furgoneta");
              numero = sc.nextInt();
+             sc.nextLine();
 
             switch (numero) {
                 case 1:
@@ -38,7 +39,7 @@ public class GestorFlota {
                     System.out.println("Introduce el número de plazas:");
                     int numPlazas = sc.nextInt();
 
-                    tipoCoche tipo = tipoCoche.valueOf(tipoStr);
+                    tipoCoche tipo = tipoCoche.valueOf(tipoStr.toUpperCase());
                     Coche coche = new Coche(matricula, marca, modelo, true, tipo, numPlazas);
                     flota.add(coche);
                     break;

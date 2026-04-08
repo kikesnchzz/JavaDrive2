@@ -35,7 +35,7 @@ public class GestorClientes {
         System.out.println("Cliente creado correctamente.");
     }
 
-    public Cliente buscarCliente(String dni) {
+    public static Cliente buscarCliente(String dni) {
         for (Cliente c : clientes) {
             if (c.getDni().equalsIgnoreCase(dni)) {
                 return c;

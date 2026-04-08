@@ -4,8 +4,7 @@ public class Furgoneta extends Vehiculo {
     private boolean esDeCarga;
     private int capacidad;
 
-    public Furgoneta(String matricula, String marca, String modelo, boolean disponible, boolean esDeCarga,
-                     int capacidad) {
+    public Furgoneta(String matricula, String marca, String modelo, boolean disponible, boolean esDeCarga, int capacidad) {
         super(matricula, marca, modelo, disponible);
         this.esDeCarga = esDeCarga;
         this.capacidad = capacidad;
