@@ -55,6 +55,8 @@ public class Main {
                         System.out.println("Error: " + e.getMessage());
                     }catch(FormatoIncorrectoException e){
                         System.out.println("Formato Incorrecto");
+                    }catch (EnumConstantNotPresentException e){
+                        System.out.println("Ese nombre no esta dentro del catálogo");
                     }
                     break;
                 case 3:
