@@ -1,12 +1,22 @@
 package model;
 
+import Excepciones.FormatoIncorrectoException;
+
 public class Cliente {
     private String dni;
     private String nombre;
     private String telefono;
 
-    public Cliente(String dni, String nombre, String telefono) {
+    public Cliente(String dni, String nombre, String telefono) throws FormatoIncorrectoException {
         super();
+
+        if(dni.length() > 9 || dni.length() < 9){
+            throw new FormatoIncorrectoException("Formato incorrecto");
+        }
+        if(telefono.length() > 9 || telefono.length() < 9){
+            throw new FormatoIncorrectoException("Formato incorrecto");
+        }
+
         this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;

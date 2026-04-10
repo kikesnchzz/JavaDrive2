@@ -1,12 +1,18 @@
 package model;
 
+import Excepciones.FormatoIncorrectoException;
+
 public abstract class Vehiculo {
     private String matricula;
     private String marca;
     private String modelo;
     private boolean disponible;
 
-    public Vehiculo(String matricula, String marca, String modelo, boolean disponible) {
+    public Vehiculo(String matricula, String marca, String modelo, boolean disponible) throws FormatoIncorrectoException {
+        if(matricula.length() > 7 || matricula.length() < 7){
+            throw new FormatoIncorrectoException("Formato de matricula incorrecto");
+        }
+
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
