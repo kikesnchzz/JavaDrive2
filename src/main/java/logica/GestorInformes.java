@@ -25,6 +25,7 @@ public class GestorInformes {
             clientes.clear();
 
         try {
+            
             leerDocumento("vehiculos.txt");
             leerDocumento("clientes.txt");
         }catch (FileNotFoundException e){
@@ -38,7 +39,7 @@ public class GestorInformes {
 
                 if(br != null) {
                     br.close();
-                    System.out.println("Archivo cerrado");
+                    System.out.println("Programa cerrado");
                 }
             }catch (IOException e) {
                 System.out.println("Error: no se puede cerrar");

@@ -35,7 +35,7 @@ public class Coche extends Vehiculo {
 
     @Override
     public String obtenerDetalles() {
-        return "coche " + tipo + ", " + numPlazas + " plazas";
+        return "Coche: " + tipo + ", " + numPlazas + " plazas";
     }
 
 

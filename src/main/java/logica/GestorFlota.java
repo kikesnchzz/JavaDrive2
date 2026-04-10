@@ -75,7 +75,7 @@ public class GestorFlota {
 
     public static void listarVehiculosDisponibles() {
         for (Vehiculo v : flota){
-            System.out.println(v);
+            System.out.println(v.obtenerDetalles() + " " + v.toString());
         }
     }
 }

@@ -55,7 +55,7 @@ public abstract class Vehiculo {
 
     @Override
     public  String toString() {
-        return "Datos del Vehículo: Marca y Modelo: " + marca + " " + modelo + "Matrícula: " + matricula + "Disponible: " +disponible;
+        return "Datos del Vehículo: Marca y Modelo: " + marca + " " + modelo + ", Matrícula: " + matricula + ", Disponible: " +disponible;
     }
 
 

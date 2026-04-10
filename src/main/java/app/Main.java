@@ -16,6 +16,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static logica.GestorClientes.buscarCliente;
+
 public class Main {
     public static List<Vehiculo> flota = new ArrayList<>();
     public static List<Cliente> clientes = new ArrayList<>();
@@ -61,8 +64,9 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Dime el nombre del cliente:");
-                    String nombreCliente = sc.nextLine();
-                    Cliente cliente = GestorClientes.buscarCliente(nombreCliente);
+                    String dniCliente = sc.nextLine();
+                    Cliente cliente = buscarCliente(dniCliente);
+                    System.out.println(cliente);
                     if (cliente == null) {
                         System.out.println("Cliente no encontrado.");
                         break;
@@ -70,6 +74,7 @@ public class Main {
                     System.out.println("Dime la matrícula del vehículo:");
                     String matricula = sc.nextLine();
                     Vehiculo vehiculo = GestorFlota.buscarVehiculo(matricula);
+                    System.out.println(vehiculo);
                     if (vehiculo == null) {
                         System.out.println("Vehículo no encontrado.");
                         break;
@@ -85,10 +90,10 @@ public class Main {
                 case 4:
                     System.out.println("Dime el DNI del cliente:");
                     String dni = sc.nextLine();
-                    if(GestorClientes.buscarCliente(dni) == null) {
+                    if(buscarCliente(dni) == null) {
                         System.out.println("Cliente no encontrado.");
                     } else {
-                        System.out.println("Cliente encontrado: " + GestorClientes.buscarCliente(dni).getNombre());
+                        System.out.println("Cliente encontrado: " + buscarCliente(dni).getNombre());
                     }
 
                     break;
@@ -130,8 +135,7 @@ public class Main {
 
 
     public static void generarInformeXML() throws IOException {
-        // El segundo parámetro 'false' asegura que el archivo se borre y se escriba de cero
-        // Si no pones el 'false', por defecto Java ya lo sobreescribe, pero así es más seguro.
+
         PrintWriter pw = new PrintWriter(new FileWriter("reporte_completo.xml", false));
 
         pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -143,11 +147,15 @@ public class Main {
         pw.println("    <ubicacion>Sede Central - Madrid</ubicacion>");
         pw.println("  </empresa>");
 
-        // --- SECCIÓN DE FLOTA ---
+
         pw.println("  <flota>");
         for (Vehiculo v : flota) {
-            // Usamos una variable para el atributo tipo para que el código sea más limpio
-            String tipo = (v instanceof Coche) ? "Coche" : "Furgoneta";
+        String tipo;
+            if (v instanceof Coche) {
+                tipo = "Coche";
+            } else {
+                tipo = "Furgoneta";
+            }
 
             pw.println("    <vehiculo tipo=\"" + tipo + "\">");
             pw.println("      <matricula>" + v.getMatricula() + "</matricula>");
@@ -158,7 +166,7 @@ public class Main {
         }
         pw.println("  </flota>");
 
-        // --- SECCIÓN DE CLIENTES ---
+
         pw.println("  <clientes>");
         for (Cliente c : clientes) {
             pw.println("    <cliente>");
@@ -171,7 +179,7 @@ public class Main {
 
         pw.println("</javadrive>");
 
-        // IMPORTANTE: Cerrar el PrintWriter para guardar los cambios
+        /
         pw.close();
     }
 }
