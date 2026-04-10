@@ -53,18 +53,18 @@ public class Cliente {
         return "Datos del Cliente: Nombre: " + nombre + " DNI: " + dni + "Teléfono: " + telefono;
     }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Cliente cliente = (Cliente) o;
-            // Comparamos por DNI para saber si es el mismo cliente
-            return Objects.equals(dni, cliente.dni);
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        // Comparamos por DNI para saber si es el mismo cliente
+        return Objects.equals(dni, cliente.dni);
+    }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(dni);
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(dni);
+    }
 
 }

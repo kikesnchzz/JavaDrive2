@@ -40,7 +40,7 @@ public class GestorClientes {
 
     public static Cliente buscarCliente(String dni) {
         for (Cliente c : clientes) {
-            if (c.getDni().equalsIgnoreCase(dni)) {
+            if (c.getDni().trim().equalsIgnoreCase(dni.trim())) {
                 return c;
             }
         }

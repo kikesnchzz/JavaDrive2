@@ -25,10 +25,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        GestorInformes.cargarDatos();
         int opcion;
         do {
-            GestorInformes.cargarDatos();
             System.out.println("==== MENU ====");
             System.out.println("1. Crear cliente");
             System.out.println("2. Crear vehículo");
@@ -63,8 +62,8 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println("Dime el nombre del cliente:");
-                    String dniCliente = sc.nextLine();
+                    System.out.println("Dime el DNI del cliente:");
+                    String dniCliente = sc.nextLine().trim();
                     Cliente cliente = buscarCliente(dniCliente);
                     System.out.println(cliente);
                     if (cliente == null) {
@@ -89,7 +88,7 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Dime el DNI del cliente:");
-                    String dni = sc.nextLine();
+                    String dni = sc.nextLine().trim();
                     if(buscarCliente(dni) == null) {
                         System.out.println("Cliente no encontrado.");
                     } else {
@@ -110,10 +109,6 @@ public class Main {
                     break;
 
                 case 7:
-                    System.out.println("Tamaño de la lista antes de XML: " + clientes.size());
-                    for(Cliente c : clientes) {
-                        System.out.println("Cliente en lista: " + c.getDni());
-                    }
                     try{
                         generarInformeXML();
                     }catch (IOException e) {
