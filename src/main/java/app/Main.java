@@ -1,4 +1,5 @@
 package app;
+import Excepciones.FormatoIncorrectoException;
 import Excepciones.NumeroIncorrectoException;
 import logica.GestorClientes;
 import logica.GestorFlota;
@@ -40,13 +41,20 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    GestorClientes.crearCliente();
+                    try{
+                        GestorClientes.crearCliente();
+                    }catch(FormatoIncorrectoException e){
+                        System.out.println("Formato Incorrecto");
+                    }
+
                     break;
                 case 2:
                     try {
                         GestorFlota.crearVehiculo();
                     } catch (NumeroIncorrectoException e) {
                         System.out.println("Error: " + e.getMessage());
+                    }catch(FormatoIncorrectoException e){
+                        System.out.println("Formato Incorrecto");
                     }
                     break;
                 case 3:
@@ -94,7 +102,12 @@ public class Main {
                     break;
 
                 case 7:
-                    generarInformeXML();
+                    try{
+                        generarInformeXML();
+                    }catch (IOException e) {
+                        System.out.println("Error al generar XML");
+                    }
+
                     break;
                 case 8:
                     System.out.println("Saliendo del programa...");
@@ -109,9 +122,7 @@ public class Main {
 
 
 
-    public static void generarInformeXML() {
-
-        try  {
+    public static void generarInformeXML() throws IOException {
             PrintWriter pw = new PrintWriter(new FileWriter("reporte_completo.xml"));
             pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             pw.println("<?xml-stylesheet type=\"text/xsl\" href=\"estilo_javadrive.xsl\"?>");
@@ -155,8 +166,6 @@ public class Main {
 
             pw.println("</javadrive>");
             pw.close();
-        } catch (IOException e) {
-            System.out.println("Error al generar XML");
-        }
+
     }
 }
