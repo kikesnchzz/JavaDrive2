@@ -27,7 +27,7 @@ public class GestorFlota {
         System.out.println("2. Furgoneta");
         int numero;
 
-        do {
+
             System.out.println("Introduce el número correspondiente si tiene Coche o Furgoneta");
              numero = sc.nextInt();
              sc.nextLine();
@@ -39,7 +39,7 @@ public class GestorFlota {
                     System.out.println("Introduce el número de plazas:");
                     int numPlazas = sc.nextInt();
 
-                    tipoCoche tipo = tipoCoche.valueOf(tipoStr.toUpperCase());
+                    tipoCoche tipo = tipoCoche.valueOf(tipoStr);
                     Coche coche = new Coche(matricula, marca, modelo, true, tipo, numPlazas);
                     flota.add(coche);
                     break;
@@ -58,7 +58,7 @@ public class GestorFlota {
                     System.out.println("Ese número no esta en el menú");
                     break;
             }
-        }while (numero != 2) ;
+
 
     }
 

@@ -23,9 +23,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        GestorInformes.cargarDatos();
+
         int opcion;
         do {
+            GestorInformes.cargarDatos();
             System.out.println("==== MENU ====");
             System.out.println("1. Crear cliente");
             System.out.println("2. Crear vehículo");
@@ -55,8 +56,8 @@ public class Main {
                         System.out.println("Error: " + e.getMessage());
                     }catch(FormatoIncorrectoException e){
                         System.out.println("Formato Incorrecto");
-                    }catch (EnumConstantNotPresentException e){
-                        System.out.println("Ese nombre no esta dentro del catálogo");
+                    }catch (IllegalArgumentException e){
+                        System.out.println("Está mal escrito el tipo de coche");
                     }
                     break;
                 case 3:

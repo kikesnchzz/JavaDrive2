@@ -20,7 +20,7 @@ public class GestorInformes {
     public static BufferedWriter bw ;
     public static PrintWriter pw;
 
-    public static void cargarDatos() {
+    public static void cargarDatos() throws IllegalArgumentException {
 
         try {
             leerDocumento("vehiculos.txt");
