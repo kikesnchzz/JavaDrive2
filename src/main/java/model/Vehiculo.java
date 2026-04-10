@@ -2,6 +2,8 @@ package model;
 
 import Excepciones.FormatoIncorrectoException;
 
+import java.util.Objects;
+
 public abstract class Vehiculo {
     private String matricula;
     private String marca;
@@ -54,9 +56,21 @@ public abstract class Vehiculo {
     public abstract String obtenerDetalles();
 
     @Override
-    public  String toString() {
+    public String toString() {
         return "Datos del Vehículo: Marca y Modelo: " + marca + " " + modelo + ", Matrícula: " + matricula + ", Disponible: " +disponible;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehiculo vehiculo= (Vehiculo) o;
+        // Comparamos por DNI para saber si es el mismo cliente
+        return Objects.equals(matricula, vehiculo.matricula);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(matricula);
+    }
 
 }

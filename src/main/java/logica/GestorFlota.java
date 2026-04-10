@@ -8,6 +8,7 @@ import model.tipoCoche;
 
 import java.util.Scanner;
 
+import static app.Main.clientes;
 import static app.Main.flota;
 
 public class GestorFlota {
@@ -41,8 +42,12 @@ public class GestorFlota {
 
                     tipoCoche tipo = tipoCoche.valueOf(tipoStr);
                     Coche coche = new Coche(matricula, marca, modelo, true, tipo, numPlazas);
-                    flota.add(coche);
-                    System.out.println("Coche creado correctamente.");
+                    if(!flota.contains(coche)) {
+                        flota.add(coche);
+                        System.out.println("Coche creado correctamente.");
+                    }else{
+                        System.out.println("Error: El coche ya existe.");
+                    }
                     break;
 
                 case 2:
@@ -53,23 +58,29 @@ public class GestorFlota {
                     int capacidad = sc.nextInt();
 
                     Furgoneta furgo = new Furgoneta(matricula, marca, modelo, true, esDeCarga, capacidad);
-                    flota.add(furgo);
-                    System.out.println("Furgoneta creada correctamente.");
+                    if(!flota.contains(furgo)) {
+                        flota.add(furgo);
+                        System.out.println("Furgoneta creado correctamente.");
+                    }else{
+                        System.out.println("Error: La furgoneta ya existe.");
+                    }
                     break;
                 default:
                     System.out.println("Ese número no esta en el menú");
                     break;
             }
 
-
     }
 
     public static Vehiculo buscarVehiculo (String matricula) {
         for (Vehiculo v : flota) {
             if(v.getMatricula().equals(matricula)){
+                System.out.println("Vehículo encontrado: " + v.obtenerDetalles() + " " + v.toString());
                 return v;
+
             }
         }
+        System.out.println("No se ha encontrado ningún vehículo con esa matrícula.");
         return null;
     }
 
