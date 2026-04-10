@@ -21,6 +21,8 @@ public class GestorInformes {
     public static PrintWriter pw;
 
     public static void cargarDatos() throws IllegalArgumentException {
+            flota.clear();
+            clientes.clear();
 
         try {
             leerDocumento("vehiculos.txt");

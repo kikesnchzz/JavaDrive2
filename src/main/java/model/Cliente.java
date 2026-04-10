@@ -2,6 +2,8 @@ package model;
 
 import Excepciones.FormatoIncorrectoException;
 
+import java.util.Objects;
+
 public class Cliente {
     private String dni;
     private String nombre;
@@ -10,10 +12,10 @@ public class Cliente {
     public Cliente(String dni, String nombre, String telefono) throws FormatoIncorrectoException {
         super();
 
-        if(dni.length() > 9 || dni.length() < 9){
+        if(dni.length() != 9){
             throw new FormatoIncorrectoException("Formato incorrecto");
         }
-        if(telefono.length() > 9 || telefono.length() < 9){
+        if(telefono.length() != 9){
             throw new FormatoIncorrectoException("Formato incorrecto");
         }
 
@@ -51,5 +53,18 @@ public class Cliente {
         return "Datos del Cliente: Nombre: " + nombre + " DNI: " + dni + "Teléfono: " + telefono;
     }
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Cliente cliente = (Cliente) o;
+            // Comparamos por DNI para saber si es el mismo cliente
+            return Objects.equals(dni, cliente.dni);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(dni);
+        }
 
 }

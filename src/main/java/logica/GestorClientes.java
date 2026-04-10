@@ -30,9 +30,12 @@ public class GestorClientes {
         String telefono = sc.nextLine();
 
         Cliente nuevo = new Cliente(dni, nombre, telefono);
-        clientes.add(nuevo);
-
-        System.out.println("Cliente creado correctamente.");
+        if(!clientes.contains(nuevo)) {
+            clientes.add(nuevo);
+            System.out.println("Cliente creado correctamente.");
+        }else{
+            System.out.println("Error: El cliente ya existe.");
+        }
     }
 
     public static Cliente buscarCliente(String dni) {

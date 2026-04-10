@@ -42,6 +42,7 @@ public class GestorFlota {
                     tipoCoche tipo = tipoCoche.valueOf(tipoStr);
                     Coche coche = new Coche(matricula, marca, modelo, true, tipo, numPlazas);
                     flota.add(coche);
+                    System.out.println("Coche creado correctamente.");
                     break;
 
                 case 2:
@@ -53,6 +54,7 @@ public class GestorFlota {
 
                     Furgoneta furgo = new Furgoneta(matricula, marca, modelo, true, esDeCarga, capacidad);
                     flota.add(furgo);
+                    System.out.println("Furgoneta creada correctamente.");
                     break;
                 default:
                     System.out.println("Ese número no esta en el menú");
