@@ -10,7 +10,13 @@ import static logica.GestorInformes.exportarTicket;
 
 public class GestorReservas {
 
-
+    /**
+     * Método para realizar un reserva
+     * @param c
+     * @param v
+     * @param fInicio
+     * @param fFin
+     */
     public static void realizarReserva(Cliente c, Vehiculo v, LocalDate fInicio, LocalDate fFin) {
 
         // 1. Cambiar estado del vehículo

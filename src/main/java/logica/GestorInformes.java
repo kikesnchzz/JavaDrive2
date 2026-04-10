@@ -20,12 +20,16 @@ public class GestorInformes {
     public static BufferedWriter bw ;
     public static PrintWriter pw;
 
+    /**
+     * cargamos los datos desde cada documento txt
+     * @throws IllegalArgumentException
+     */
     public static void cargarDatos() throws IllegalArgumentException {
             flota.clear();
             clientes.clear();
 
         try {
-            
+            // llamamos a un método auxiliar para leer documentos
             leerDocumento("vehiculos.txt");
             leerDocumento("clientes.txt");
         }catch (FileNotFoundException e){
@@ -50,6 +54,9 @@ public class GestorInformes {
     }
     }
 
+    /**
+     * Método para guardar todos los datos de los documentos txt
+     */
     public static void guardarDatos() {
             try {
                 pw = new PrintWriter(new FileWriter("vehiculos.txt"));
@@ -78,6 +85,10 @@ public class GestorInformes {
 
     }
 
+    /**
+     * Método para crear un documento txt con el ticket de una reserva concreta
+     * @param r
+     */
     public static void exportarTicket (Reserva r) {
         try {
             String nombreArchivo = "ticket_" + r.getIdReserva() + ".txt";
@@ -120,6 +131,12 @@ public class GestorInformes {
         }
     }
 
+    /**
+     * Método que convierte una linea del documento de vehiculos a un objeto
+     * @param linea
+     * @return objeto coche y furgoneta
+     * @throws NumeroIncorrectoException
+     */
     public static Vehiculo convierteAVehiculo(String linea) throws NumeroIncorrectoException {
         String [] partes = linea.split(";");
         if (partes.length == 7) {
@@ -144,6 +161,11 @@ public class GestorInformes {
         return null;
     }
 
+    /**
+     * El mismo método que el anterior pero para el documento de clientes
+     * @param linea
+     * @return
+     */
     public static Cliente convierteACliente(String linea) {
         String [] partes = linea.split(";");
         if (partes.length == 3) {
@@ -155,6 +177,12 @@ public class GestorInformes {
         return null;
     }
 
+    /**
+     * Metodo que lee los documentos y los convertimos para después añadirlos a los ArraysList correspondientes
+     * @param ruta
+     * @throws IOException
+     * @throws NumeroIncorrectoException
+     */
     public static void leerDocumento(String ruta) throws IOException, NumeroIncorrectoException {
         if(ruta.equals("vehiculos.txt")){
             br = new BufferedReader(new FileReader(ruta));
@@ -172,13 +200,19 @@ public class GestorInformes {
             }
         }
     }
+
+    /**
+     * Metodo paramostrar los vehículos por pantalla
+     * @param v
+     * @return la informacón de coche y de vehículo
+     */
     public static String mostrarVehiculos(Vehiculo v){
         if(v instanceof Coche){
             Coche c = (Coche) v;
             return "Coche: " + v.toString() + " " + v.obtenerDetalles();
         } else if (v instanceof Furgoneta) {
             Furgoneta f = (Furgoneta) v;
-            return "Furgoneta: " + v.toString() + " " + f.toString();
+            return "Furgoneta: " + v.toString() + " " + v.obtenerDetalles();
         }else{
             return " ";
         }

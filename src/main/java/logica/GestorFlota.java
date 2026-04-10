@@ -12,7 +12,12 @@ import static app.Main.clientes;
 import static app.Main.flota;
 
 public class GestorFlota {
+    /**
+     * Método para crear vehículos
+     * @throws NumeroIncorrectoException
+     */
     public static void crearVehiculo() throws NumeroIncorrectoException {
+       // Generalizamos los el pedir la matrícula, marca o modelo
         Scanner sc = new Scanner(System.in);
         System.out.println("Datos comunes:");
 
@@ -23,6 +28,7 @@ public class GestorFlota {
         System.out.println("Introduce el modelo:");
         String modelo = sc.nextLine();
 
+        //Preguntamos si coche o furgoneta
         System.out.println("==========================");
         System.out.println("1. Coche");
         System.out.println("2. Furgoneta");
@@ -35,6 +41,7 @@ public class GestorFlota {
 
             switch (numero) {
                 case 1:
+                    // creamos el coche
                     System.out.println("Introduce el tipo de coche:");
                     String tipoStr = sc.nextLine();
                     System.out.println("Introduce el número de plazas:");
@@ -51,6 +58,7 @@ public class GestorFlota {
                     break;
 
                 case 2:
+                    //creamos la furgoneta
                     System.out.println("Introduce si es de carga (true/false):");
                     boolean esDeCarga = sc.nextBoolean();
                     sc.nextLine();
@@ -72,6 +80,11 @@ public class GestorFlota {
 
     }
 
+    /**
+     * Método para buscar un vehículo
+     * @param matricula
+     * @return el objeto
+     */
     public static Vehiculo buscarVehiculo (String matricula) {
         for (Vehiculo v : flota) {
             if(v.getMatricula().equals(matricula)){
@@ -84,9 +97,14 @@ public class GestorFlota {
         return null;
     }
 
+    /**
+     * Método para que devuelve la lista de vehículos que están disponibles
+     */
     public static void listarVehiculosDisponibles() {
         for (Vehiculo v : flota){
-            System.out.println(v.obtenerDetalles() + " " + v.toString());
+            if(v.isDisponible() == true){
+                System.out.println(v.obtenerDetalles() + " " + v.toString());
+            }
         }
     }
 }

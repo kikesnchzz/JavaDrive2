@@ -23,6 +23,10 @@ public class Main {
     public static List<Vehiculo> flota = new ArrayList<>();
     public static List<Cliente> clientes = new ArrayList<>();
 
+    /**
+     * Menú
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         GestorInformes.cargarDatos();
@@ -62,32 +66,32 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println("Dime el DNI del cliente:");
+                    System.out.println("Dime el DNI del cliente:");//Pedimos el dni
                     String dniCliente = sc.nextLine().trim();
-                    Cliente cliente = buscarCliente(dniCliente);
+                    Cliente cliente = buscarCliente(dniCliente);//creamos un objeto para poder imprimirlo
                     System.out.println(cliente);
                     if (cliente == null) {
                         System.out.println("Cliente no encontrado.");
                         break;
                     }
-                    System.out.println("Dime la matrícula del vehículo:");
+                    System.out.println("Dime la matrícula del vehículo:");// Pedimos la matricula
                     String matricula = sc.nextLine();
-                    Vehiculo vehiculo = GestorFlota.buscarVehiculo(matricula);
+                    Vehiculo vehiculo = GestorFlota.buscarVehiculo(matricula);//creamos un objeto para poder imprimirlo
                     System.out.println(vehiculo);
                     if (vehiculo == null) {
                         System.out.println("Vehículo no encontrado.");
                         break;
                     }
-                    System.out.println("Dime la fecha de inicio (YYYY-MM-DD):");
+                    System.out.println("Dime la fecha de inicio (YYYY-MM-DD):");//Pedimos los  demas datos de una reserva
                     String fechaInicioStr = sc.nextLine();
                     System.out.println("Dime la fecha de fin (YYYY-MM-DD):");
                     String fechaFinStr = sc.nextLine();
-                    LocalDate fechaInicio = LocalDate.parse(fechaInicioStr);
+                    LocalDate fechaInicio = LocalDate.parse(fechaInicioStr);//Parseamos las fechas
                     LocalDate fechaFin = LocalDate.parse(fechaFinStr);
                     GestorReservas.realizarReserva(cliente, vehiculo, fechaInicio, fechaFin);
                     break;
                 case 4:
-                    System.out.println("Dime el DNI del cliente:");
+                    System.out.println("Dime el DNI del cliente:");//Pedimos el dni para buscar
                     String dni = sc.nextLine().trim();
                     if(buscarCliente(dni) == null) {
                         System.out.println("Cliente no encontrado.");
@@ -98,19 +102,19 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Dime la matrícula del vehículo:");
+                    System.out.println("Dime la matrícula del vehículo:");//Pedimos la matrícula para buscar
                     matricula = sc.nextLine();
                     GestorFlota.buscarVehiculo( matricula);
                     break;
 
                 case 6:
-                    GestorFlota.listarVehiculosDisponibles();
+                    GestorFlota.listarVehiculosDisponibles();//Imprimimos los vehículos disponibles
                     System.out.println("Archivo creado correctamente");
                     break;
 
                 case 7:
                     try{
-                        generarInformeXML();
+                        generarInformeXML();// Generamos el informe
                     }catch (IOException e) {
                         System.out.println("Error al generar XML");
                     }
@@ -128,7 +132,10 @@ public class Main {
     }
 
 
-
+    /**
+     * Método para generar el informe en xml
+     * @throws IOException
+     */
     public static void generarInformeXML() throws IOException {
 
         PrintWriter pw = new PrintWriter(new FileWriter("reporte_completo.xml", false));

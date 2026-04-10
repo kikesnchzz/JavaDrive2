@@ -10,7 +10,9 @@ import static app.Main.clientes;
 public class GestorClientes {
 
 
-    // Gestión de negocios
+    /**
+     * Método para crear clientes
+     */
     public static void crearCliente() {
         Scanner sc = new Scanner(System.in);
 
@@ -38,6 +40,11 @@ public class GestorClientes {
         }
     }
 
+    /**
+     * Método para buscar clientes
+     * @param dni
+     * @return el objeto
+     */
     public static Cliente buscarCliente(String dni) {
         for (Cliente c : clientes) {
             if (c.getDni().trim().equalsIgnoreCase(dni.trim())) {
