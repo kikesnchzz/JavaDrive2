@@ -6,9 +6,9 @@ import model.Furgoneta;
 import model.Vehiculo;
 import model.tipoCoche;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import static app.Main.clientes;
 import static app.Main.flota;
 
 public class GestorFlota {
@@ -99,12 +99,19 @@ public class GestorFlota {
 
     /**
      * Método para que devuelve la lista de vehículos que están disponibles
+     *
+     * @return
      */
-    public static void listarVehiculosDisponibles() {
-        for (Vehiculo v : flota){
-            if(v.isDisponible() == true){
+    public static ArrayList<Vehiculo> listarVehiculosDisponibles() {
+        ArrayList<Vehiculo> disponibles = new ArrayList<>(); // 1. Crear la lista
+
+        for (Vehiculo v : flota) {
+            if (v.isDisponible()) {
                 System.out.println(v.obtenerDetalles() + " " + v.toString());
+                disponibles.add(v); // 2. Añadir el vehículo a la lista
             }
         }
+
+        return disponibles; // 3. Retornar la lista (nunca será null)
     }
 }
