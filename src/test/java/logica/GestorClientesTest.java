@@ -38,7 +38,7 @@ class GestorClientesTest {
 
     @Test
     void testCrearClienteDuplicado() {
-        Main.clientes.add(new Cliente("67890123F", "Antonio", "644555666"));
+        Main.clientes.add(new Cliente("67890124F", "Antonio", "644555666"));
 
         String input = "67890123F\nOtro\n644555666\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
