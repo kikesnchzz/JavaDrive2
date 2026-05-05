@@ -41,7 +41,7 @@ public class GestorClientes {
     }
 
     /**
-     * Método para buscar clientes
+     * Metodo para buscar clientes
      * @param dni
      * @return el objeto
      */

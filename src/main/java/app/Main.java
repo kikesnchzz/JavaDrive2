@@ -16,9 +16,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import static logica.GestorClientes.buscarCliente;
-
+/**
+ * @author Enrique
+ * @author  Juan Carlos
+ * @version 1.1.0
+ */
 public class Main {
     public static List<Vehiculo> flota = new ArrayList<>();
     public static List<Cliente> clientes = new ArrayList<>();
@@ -74,7 +77,7 @@ public class Main {
                         System.out.println("Cliente no encontrado.");
                         break;
                     }
-                    System.out.println("Dime la matrícula del vehículo:");// Pedimos la matricula
+                    System.out.println("Dime la matrícula del vehículo:");// Pedimos la matrícula
                     String matricula = sc.nextLine();
                     Vehiculo vehiculo = GestorFlota.buscarVehiculo(matricula);//creamos un objeto para poder imprimirlo
                     System.out.println(vehiculo);
@@ -82,7 +85,7 @@ public class Main {
                         System.out.println("Vehículo no encontrado.");
                         break;
                     }
-                    System.out.println("Dime la fecha de inicio (YYYY-MM-DD):");//Pedimos los  demas datos de una reserva
+                    System.out.println("Dime la fecha de inicio (YYYY-MM-DD):");//Pedimos los demás datos de una reserva
                     String fechaInicioStr = sc.nextLine();
                     System.out.println("Dime la fecha de fin (YYYY-MM-DD):");
                     String fechaFinStr = sc.nextLine();
