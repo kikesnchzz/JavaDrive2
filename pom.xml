@@ -72,6 +72,9 @@
                         </goals>
                         <configuration>
                             <rules>
+                                <includes>
+                                    <include>logica/*</include>
+                                </includes>
                                 <rule>
                                     <element>BUNDLE</element>
                                     <limits>
@@ -81,15 +84,16 @@
                                             <minimum>0.8</minimum>
                                         </limit>
                                     </limits>
+                                    <excludes>
+                                    <exclude>app/*</exclude>
+                                </excludes>
                                 </rule>
                             </rules>
                         </configuration>
                     </execution>
                 </executions>
                 <configuration>
-                    <excludes>
-                        <exclude>app/*</exclude>
-                    </excludes>
+
                 </configuration>
             </plugin>
 
