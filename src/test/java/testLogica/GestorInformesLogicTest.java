@@ -1,9 +1,15 @@
+// src/test/java/testLogica/GestorInformesCoverageTest.java
+
 package testLogica;
 
-import Excepciones.NumeroIncorrectoException;
 import app.Main;
 import logica.GestorInformes;
-import model.*;
+import model.Cliente;
+import model.Coche;
+import model.Furgoneta;
+import model.Reserva;
+import model.Vehiculo;
+import model.tipoCoche;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,38 +20,43 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GestorInformesLogicTest {
-        @BeforeEach
-        void setUp() {
-            Main.clientes.clear();
-            Main.flota.clear();
-        }
-        @Test
-        void convierteLineaACoche() throws NumeroIncorrectoException {
 
-            Vehiculo v = GestorInformes.convierteAVehiculo(
-                    "COCHE;1111AAA;Seat;Ibiza;true;Pequeño;5"
-            );
+    @BeforeEach
+    void setUp() {
+        Main.clientes.clear();
+        Main.flota.clear();
+    }
 
-            assertNotNull(v);
-            assertTrue(v instanceof Coche);
-        }
-        @Test
-        void convierteLineaAFurgoneta() throws NumeroIncorrectoException {
+    @Test
+    void convierteLineaACoche() throws Exception {
 
-            Vehiculo v = GestorInformes.convierteAVehiculo(
-                    "FURGONETA;2222BBB;Ford;Transit;true;true;1000"
-            );
+        Vehiculo v = GestorInformes.convierteAVehiculo(
+                "COCHE;1111AAA;Seat;Ibiza;true;Pequeño;5"
+        );
 
-            assertNotNull(v);
-            assertTrue(v instanceof Furgoneta);
-        }
-        @Test
-        void convertirVehiculoInvalidoDevuelveNull() throws NumeroIncorrectoException {
+        assertNotNull(v);
+        assertTrue(v instanceof Coche);
+    }
 
-            Vehiculo v = GestorInformes.convierteAVehiculo("dato_mal");
+    @Test
+    void convierteLineaAFurgoneta() throws Exception {
 
-            assertNull(v);
-        }
+        Vehiculo v = GestorInformes.convierteAVehiculo(
+                "FURGONETA;2222BBB;Ford;Transit;true;true;1000"
+        );
+
+        assertNotNull(v);
+        assertTrue(v instanceof Furgoneta);
+    }
+
+    @Test
+    void convertirVehiculoInvalidoDevuelveNull() throws Exception {
+
+        Vehiculo v = GestorInformes.convierteAVehiculo("dato_mal");
+
+        assertNull(v);
+    }
+
     @Test
     void convierteClienteCorrectamente() {
 
@@ -56,8 +67,9 @@ class GestorInformesLogicTest {
         assertNotNull(c);
         assertEquals("Juan", c.getNombre());
     }
+
     @Test
-    void mostrarVehiculosCoche() throws NumeroIncorrectoException {
+    void mostrarVehiculosCoche() throws Exception {
 
         Coche coche = new Coche(
                 "1111AAA",
@@ -67,12 +79,14 @@ class GestorInformesLogicTest {
                 tipoCoche.Pequeño,
                 5
         );
+
         String texto = GestorInformes.mostrarVehiculos(coche);
 
         assertTrue(texto.contains("Coche"));
     }
+
     @Test
-    void mostrarVehiculosFurgoneta() throws NumeroIncorrectoException {
+    void mostrarVehiculosFurgoneta() throws Exception {
 
         Furgoneta furgo = new Furgoneta(
                 "2222BBB",
@@ -87,6 +101,7 @@ class GestorInformesLogicTest {
 
         assertTrue(texto.contains("Furgoneta"));
     }
+
     @Test
     void leerDocumentoVehiculos() throws Exception {
 
@@ -98,6 +113,7 @@ class GestorInformesLogicTest {
 
         assertEquals(1, Main.flota.size());
     }
+
     @Test
     void leerDocumentoClientes() throws Exception {
 
@@ -109,6 +125,7 @@ class GestorInformesLogicTest {
 
         assertEquals(1, Main.clientes.size());
     }
+
     @Test
     void generarInformeXMLCorrectamente() throws Exception {
 
@@ -135,37 +152,36 @@ class GestorInformesLogicTest {
     }
 
     @Test
-        void exportarTicketGeneraArchivo() throws Exception {
+    void exportarTicketGeneraArchivo() throws Exception {
 
-            Cliente cliente = new Cliente(
-                    "12345678A",
-                    "Mario",
-                    "677777777"
-            );
+        Cliente cliente = new Cliente(
+                "12345678A",
+                "Mario",
+                "677777777"
+        );
 
-            Coche coche = new Coche(
-                    "7777GGG",
-                    "Mercedes",
-                    "Clase A",
-                    true,
-                    tipoCoche.Deportivo,
-                    5
-            );
+        Coche coche = new Coche(
+                "7777GGG",
+                "Mercedes",
+                "Clase A",
+                true,
+                tipoCoche.Deportivo,
+                5
+        );
 
-            Reserva reserva = new Reserva(
-                    cliente,
-                    coche,
-                    LocalDate.now(),
-                    LocalDate.now().plusDays(5)
-            );
+        Reserva reserva = new Reserva(
+                cliente,
+                coche,
+                LocalDate.now(),
+                LocalDate.now().plusDays(5)
+        );
 
-            GestorInformes.exportarTicket(reserva);
+        GestorInformes.exportarTicket(reserva);
 
-            File archivo = new File(
-                    "ticket_" + reserva.getIdReserva() + ".txt"
-            );
+        File archivo = new File(
+                "ticket_" + reserva.getIdReserva() + ".txt"
+        );
 
-            assertTrue(archivo.exists());
-        }
-
+        assertTrue(archivo.exists());
     }
+}
