@@ -39,6 +39,7 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
+
                 <executions>
 
                     <execution>
@@ -53,49 +54,45 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                    </execution>
-                    <execution>
-                        <id>report-xml</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
+
                         <configuration>
-                            <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                            <includes>
+                                <include>logica/*</include>
+                            </includes>
                         </configuration>
                     </execution>
+
                     <execution>
                         <id>check</id>
-                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
+
                         <configuration>
+
+                            <includes>
+                                <include>logica/*</include>
+                            </includes>
+
                             <rules>
-                                <includes>
-                                    <include>logica/*</include>
-                                </includes>
                                 <rule>
                                     <element>BUNDLE</element>
+
                                     <limits>
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.8</minimum>
+                                            <minimum>0.80</minimum>
                                         </limit>
                                     </limits>
-                                    <excludes>
-                                        <exclude>modelo/*</exclude>
-                                    <exclude>app/*</exclude>
-                                </excludes>
+
                                 </rule>
                             </rules>
+
                         </configuration>
                     </execution>
-                </executions>
-                <configuration>
 
-                </configuration>
+                </executions>
             </plugin>
 
         </plugins>
