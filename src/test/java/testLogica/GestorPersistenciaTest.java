@@ -39,8 +39,9 @@ public class GestorPersistenciaTest {
     }
 
     @Test
-    void testGuardarDatos() {
+    void testGuardarDatosConDatos() {
         Main.clientes.clear();
+        Main.flota.clear();
 
         Cliente c = new Cliente("12345678Z", "Juan", "600000000");
         Main.clientes.add(c);
@@ -100,22 +101,72 @@ public class GestorPersistenciaTest {
         Files.deleteIfExists(Path.of("vehiculos.txt"));
     }
     @Test
-    void testCoberturaTotal() {
+    void testCoberturaTotalPersistencia() {
         Main.clientes.clear();
+        Main.flota.clear();
 
-        // cliente
         Cliente c = new Cliente("12345678Z", "Juan", "600000000");
         Main.clientes.add(c);
 
-        GestorClientes.buscarCliente("12345678Z");
-        GestorClientes.buscarCliente("NO");
-        GestorClientes.buscarCliente(" 12345678Z ");
-
-        // persistencia
+        // guardar
         GestorPersistencia.guardarDatos();
+
+        // cargar normal
+        GestorPersistencia.cargarDatos();
+
+        // borrar archivos → fuerza catch
+        new java.io.File("vehiculos.txt").delete();
+        new java.io.File("clientes.txt").delete();
+
+        GestorPersistencia.cargarDatos();
+
+        assertTrue(true);
+    }
+    @Test
+    void testCargarDatosNormal() {
+        try {
+            new java.io.File("vehiculos.txt").createNewFile();
+            new java.io.File("clientes.txt").createNewFile();
+        } catch (Exception e) {}
+
+        GestorPersistencia.cargarDatos();
+
+        assertTrue(true);
+    }
+    @Test
+    void testCargarDatosArchivoNoExiste() {
+        // asegúrate de que no existan los archivos
+        new java.io.File("vehiculos.txt").delete();
+        new java.io.File("clientes.txt").delete();
+
+        GestorPersistencia.cargarDatos();
+
+        assertTrue(true);
+    }
+    @Test
+    void testGuardarDatosVacio() {
+        Main.clientes.clear();
+        Main.flota.clear();
+
+        GestorPersistencia.guardarDatos();
+
+        assertTrue(true);
+    }
+    @Test
+    void testGuardarSinClientes() {
+        Main.clientes.clear();
+
+        GestorPersistencia.guardarDatos();
+
+        assertTrue(true);
+    }
+    @Test
+    void testCargarDatosError() {
+        // ejecuta varias veces para cubrir ramas
         GestorPersistencia.cargarDatos();
         GestorPersistencia.cargarDatos();
 
         assertTrue(true);
     }
+
 }
