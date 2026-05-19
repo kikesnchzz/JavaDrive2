@@ -5,19 +5,19 @@ ID RESERVA: 4
 FECHA DE EMISIÓN: 2026-05-19
 ---------------------------------------------
 DATOS DEL CLIENTE:
-Nombre: Ana García
+Nombre: Juan
 DNI: 12345678A
 Teléfono: 612345678
 ----------------------------------------------
 DATOS DEL VEHÍCULO: 
-Marca y Modelo: Ford Transit
-Matricula: 9999ZZZ
-Detalles: Furgoneta de Carga: (800 kg)
+Marca y Modelo: Seat Ibiza
+Matricula: 1111AAA
+Detalles: Coche: Pequeño, 5 plazas
 -----------------------------------------------
 PERIODO DE ALQUILER: 
 Fecha de recogida: 2026-05-19
-Fecha de devolución: 2026-05-20
-Total de días: 1 días
+Fecha de devolución: 2026-05-21
+Total de días: 2 días
 --------------------------------------------------
 ESTADO: Confirmado y Pendiente de pago
 

@@ -1,0 +1,1 @@
+Datos del Cliente: Nombre: Juan DNI: 12345678ZTeléfono: 600000000

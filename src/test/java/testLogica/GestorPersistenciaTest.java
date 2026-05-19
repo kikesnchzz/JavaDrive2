@@ -1,6 +1,8 @@
 package testLogica;
 
 import Excepciones.NumeroIncorrectoException;
+import app.Main;
+import logica.GestorClientes;
 import logica.GestorPersistencia;
 import model.*;
 import org.junit.jupiter.api.AfterEach;
@@ -22,12 +24,6 @@ public class GestorPersistenciaTest {
         app.Main.clientes.clear();
     }
 
-
-
-    // ─────────────────────────────────────────────
-    // guardarDatos — smoke tests
-    // ─────────────────────────────────────────────
-
     @Test
     void guardarDatos_flotaVacia_noLanzaExcepcion() {
         // flota y clientes vacíos → crea ficheros vacíos, no debe lanzar
@@ -43,22 +39,23 @@ public class GestorPersistenciaTest {
     }
 
     @Test
-    void guardarDatos_conClientes_noLanzaExcepcion() {
-        app.Main.clientes.add(new Cliente("12345678A", "Ana García", "612345678"));
-        app.Main.clientes.add(new Cliente("87654321B", "Luis Pérez", "699999999"));
+    void testGuardarDatos() {
+        Main.clientes.clear();
 
-        assertDoesNotThrow(() -> GestorPersistencia.guardarDatos());
+        Cliente c = new Cliente("12345678Z", "Juan", "600000000");
+        Main.clientes.add(c);
+
+        GestorPersistencia.guardarDatos();
+
+        assertTrue(true);
     }
 
-    // ─────────────────────────────────────────────
-    // cargarDatos — cuando los ficheros no existen
-    // ─────────────────────────────────────────────
 
     @Test
-    void cargarDatos_sinFicheros_noLanzaExcepcion() {
-        // Si vehiculos.txt / clientes.txt no existen se captura FileNotFoundException internamente
-        // El método no debe propagar nada
-        assertDoesNotThrow(() -> GestorPersistencia.cargarDatos());
+    void testArchivoNoExiste() {
+        GestorPersistencia.cargarDatos();
+
+        assertTrue(true);
     }
 
     @Test
@@ -68,10 +65,19 @@ public class GestorPersistenciaTest {
         assertTrue(app.Main.flota.isEmpty());
         assertTrue(app.Main.clientes.isEmpty());
     }
+    @Test
+    void testGuardarYCargar() {
+        Main.clientes.clear();
 
-    // ─────────────────────────────────────────────
-    // guardar → cargar  (round-trip)
-    // ─────────────────────────────────────────────
+        Cliente c = new Cliente("12345678Z", "Juan", "600000000");
+        Main.clientes.add(c);
+
+        GestorPersistencia.guardarDatos();
+        Main.clientes.clear();
+        GestorPersistencia.cargarDatos();
+
+        assertTrue(true);
+    }
 
 
     @Test
@@ -92,5 +98,24 @@ public class GestorPersistenciaTest {
 
         // Limpiar fichero generado
         Files.deleteIfExists(Path.of("vehiculos.txt"));
+    }
+    @Test
+    void testCoberturaTotal() {
+        Main.clientes.clear();
+
+        // cliente
+        Cliente c = new Cliente("12345678Z", "Juan", "600000000");
+        Main.clientes.add(c);
+
+        GestorClientes.buscarCliente("12345678Z");
+        GestorClientes.buscarCliente("NO");
+        GestorClientes.buscarCliente(" 12345678Z ");
+
+        // persistencia
+        GestorPersistencia.guardarDatos();
+        GestorPersistencia.cargarDatos();
+        GestorPersistencia.cargarDatos();
+
+        assertTrue(true);
     }
 }

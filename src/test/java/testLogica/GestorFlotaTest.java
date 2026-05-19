@@ -13,19 +13,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests para GestorFlota.
- */
+
 public class GestorFlotaTest {
 
     @BeforeEach
     void setUp() {
         app.Main.flota.clear();
     }
-
-    // ─────────────────────────────────────────────
-    // buscarVehiculo
-    // ─────────────────────────────────────────────
 
     @Test
     void buscarVehiculo_existente_devuelveVehiculo() throws NumeroIncorrectoException {
@@ -71,10 +65,6 @@ public class GestorFlotaTest {
         assertNotNull(resultado);
         assertInstanceOf(Furgoneta.class, resultado);
     }
-
-    // ─────────────────────────────────────────────
-    // listarVehiculosDisponibles
-    // ─────────────────────────────────────────────
 
     @Test
     void listarVehiculosDisponibles_todosDisponibles_devuelveTodos() throws NumeroIncorrectoException {

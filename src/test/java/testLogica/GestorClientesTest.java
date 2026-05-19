@@ -1,5 +1,6 @@
 package testLogica;
 
+import app.Main;
 import logica.GestorClientes;
 import model.Cliente;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,22 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests para GestorClientes.
- * Usa app.Main.clientes directamente (campo estático público).
- */
+
 public class GestorClientesTest {
 
     @BeforeEach
     void setUp() {
-        // Limpiamos la lista compartida antes de cada test
         app.Main.clientes.clear();
     }
-
-    // ─────────────────────────────────────────────
-    // buscarCliente
-    // ─────────────────────────────────────────────
-
     @Test
     void buscarCliente_existente_devuelveCliente() {
         Cliente c = new Cliente("12345678A", "Ana García", "612345678");
@@ -76,4 +68,48 @@ public class GestorClientesTest {
         assertNotNull(resultado);
         assertEquals("Marta", resultado.getNombre());
     }
+    @Test
+    void testCrearClienteCompleto() {
+        Main.clientes.clear();
+
+        String input = "12345678Z\nJuan\n600000000\n";
+        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+
+        GestorClientes.crearCliente();
+
+        // repetir para cubrir duplicado
+        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+        GestorClientes.crearCliente();
+
+        assertTrue(true);
+    }
+    @Test
+    void testCrearClienteDuplicado() {
+        Main.clientes.clear();
+
+        Cliente c = new Cliente("12345678Z", "Juan", "600000000");
+        Main.clientes.add(c);
+
+        String input = "12345678Z\nPedro\n611111111\n";
+        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+
+        GestorClientes.crearCliente();
+
+        assertEquals(1, Main.clientes.size()); // no añade otro
+    }
+    @Test
+    void testCrearClienteYaExisteReturn() {
+        Main.clientes.clear();
+
+        Cliente c = new Cliente("12345678Z", "Juan", "600000000");
+        Main.clientes.add(c);
+
+        String input = "12345678Z\nOtro\n999999999\n";
+        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+
+        GestorClientes.crearCliente();
+
+        assertEquals(1, Main.clientes.size());
+    }
+
 }

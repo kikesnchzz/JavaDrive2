@@ -10,16 +10,6 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests para GestorInformes.
- * Se prueban los métodos puros (sin I/O de fichero):
- *   - convierteAVehiculo
- *   - convierteACliente
- *   - mostrarVehiculos
- *
- * exportarTicket y generarInformeXML escriben ficheros reales;
- * se testea que no lanzan excepción con datos válidos.
- */
 public class GestorInformesTest {
 
     @BeforeEach
@@ -27,11 +17,6 @@ public class GestorInformesTest {
         app.Main.flota.clear();
         app.Main.clientes.clear();
     }
-
-    // ─────────────────────────────────────────────
-    // convierteAVehiculo
-    // ─────────────────────────────────────────────
-
     @Test
     void convierteAVehiculo_lineaCoche_devuelveCoche() throws NumeroIncorrectoException {
         String linea = "COCHE;1234ABC;Seat;Ibiza;true;Pequeño;5";
@@ -87,11 +72,6 @@ public class GestorInformesTest {
         Vehiculo v = GestorInformes.convierteAVehiculo(";;;");
         assertNull(v);
     }
-
-    // ─────────────────────────────────────────────
-    // convierteACliente
-    // ─────────────────────────────────────────────
-
     @Test
     void convierteACliente_lineaValida_devuelveCliente() {
         String linea = "12345678A;Ana García;612345678";
@@ -117,10 +97,6 @@ public class GestorInformesTest {
         Cliente c = GestorInformes.convierteACliente(";;");
         assertNull(c);
     }
-
-    // ─────────────────────────────────────────────
-    // mostrarVehiculos
-    // ─────────────────────────────────────────────
 
     @Test
     void mostrarVehiculos_coche_contieneEtiquetaCoche() throws NumeroIncorrectoException {
@@ -156,10 +132,6 @@ public class GestorInformesTest {
         assertTrue(resultado.contains("Pasajeros"));
         assertTrue(resultado.contains("9"));
     }
-
-    // ─────────────────────────────────────────────
-    // exportarTicket  (smoke test — solo verifica que no lanza)
-    // ─────────────────────────────────────────────
 
     @Test
     void exportarTicket_reservaValida_noLanzaExcepcion() throws NumeroIncorrectoException {

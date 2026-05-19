@@ -10,14 +10,14 @@ DNI: 12345678A
 Teléfono: 612345678
 ----------------------------------------------
 DATOS DEL VEHÍCULO: 
-Marca y Modelo: Seat Ibiza
-Matricula: 1234ABC
-Detalles: Coche: Pequeño, 5 plazas
+Marca y Modelo: Ford Transit
+Matricula: 9999ZZZ
+Detalles: Furgoneta de Carga: (800 kg)
 -----------------------------------------------
 PERIODO DE ALQUILER: 
 Fecha de recogida: 2026-05-19
-Fecha de devolución: 2026-05-24
-Total de días: 5 días
+Fecha de devolución: 2026-05-20
+Total de días: 1 días
 --------------------------------------------------
 ESTADO: Confirmado y Pendiente de pago
 
