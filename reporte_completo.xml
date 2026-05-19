@@ -7,89 +7,17 @@
   </empresa>
   <flota>
     <vehiculo tipo="Coche">
-      <matricula>1234ABC</matricula>
+      <matricula>1111AAA</matricula>
       <marca>Seat</marca>
-      <modelo>Leon</modelo>
-      <especifico>Coche: Familiar, 5 plazas</especifico>
-    </vehiculo>
-    <vehiculo tipo="Coche">
-      <matricula>5678DEF</matricula>
-      <marca>Fiat</marca>
-      <modelo>500</modelo>
-      <especifico>Coche: Pequeño, 4 plazas</especifico>
-    </vehiculo>
-    <vehiculo tipo="Coche">
-      <matricula>9012GHI</matricula>
-      <marca>Porsche</marca>
-      <modelo>911</modelo>
-      <especifico>Coche: Deportivo, 2 plazas</especifico>
-    </vehiculo>
-    <vehiculo tipo="Furgoneta">
-      <matricula>1122JKL</matricula>
-      <marca>Ford</marca>
-      <modelo>Transit</modelo>
-      <especifico>Furgoneta de Carga: (1200 kg)</especifico>
-    </vehiculo>
-    <vehiculo tipo="Furgoneta">
-      <matricula>3344MNO</matricula>
-      <marca>Volkswagen</marca>
-      <modelo>Multivan</modelo>
-      <especifico>Furgoneta de Pasajeros: (7 personas)</especifico>
-    </vehiculo>
-    <vehiculo tipo="Furgoneta">
-      <matricula>5566PQR</matricula>
-      <marca>Mercedes</marca>
-      <modelo>Sprinter</modelo>
-      <especifico>Furgoneta de Carga: (3500 kg)</especifico>
-    </vehiculo>
-    <vehiculo tipo="Coche">
-      <matricula>4567ESP</matricula>
-      <marca>Audi</marca>
-      <modelo>A4</modelo>
-      <especifico>Coche: Deportivo, 4 plazas</especifico>
-    </vehiculo>
-    <vehiculo tipo="Furgoneta">
-      <matricula>7891ALE</matricula>
-      <marca>Citroen</marca>
-      <modelo>Berlingo</modelo>
-      <especifico>Furgoneta de Pasajeros: (6 personas)</especifico>
+      <modelo>Ibiza</modelo>
+      <especifico>Coche: Pequeño, 5 plazas</especifico>
     </vehiculo>
   </flota>
   <clientes>
     <cliente>
       <dni>12345678A</dni>
-      <nombre>Juan Perez</nombre>
-      <telefono>600111222</telefono>
-    </cliente>
-    <cliente>
-      <dni>23456789B</dni>
-      <nombre>Maria Garcia</nombre>
-      <telefono>611222333</telefono>
-    </cliente>
-    <cliente>
-      <dni>34567890C</dni>
-      <nombre>Carlos Ruiz</nombre>
-      <telefono>622333444</telefono>
-    </cliente>
-    <cliente>
-      <dni>45678901D</dni>
-      <nombre>Ana Martinez</nombre>
-      <telefono>633444555</telefono>
-    </cliente>
-    <cliente>
-      <dni>56789012E</dni>
-      <nombre>Luis Fernandez</nombre>
-      <telefono>644555666</telefono>
-    </cliente>
-    <cliente>
-      <dni>67890123F</dni>
-      <nombre>Elena Blanco</nombre>
-      <telefono>655666777</telefono>
-    </cliente>
-    <cliente>
-      <dni>24468453H</dni>
-      <nombre>Enrique</nombre>
-      <telefono>698928573</telefono>
+      <nombre>Juan</nombre>
+      <telefono>666666666</telefono>
     </cliente>
   </clientes>
 </javadrive>

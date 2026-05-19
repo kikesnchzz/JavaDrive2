@@ -1,1 +1,1 @@
-Coche: Coche: Pequeño, 5 plazas
+COCHE;1111AAA;Seat;Ibiza;true;Pequeño;5

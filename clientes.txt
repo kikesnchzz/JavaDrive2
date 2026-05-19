@@ -1,1 +1,1 @@
-Datos del Cliente: Nombre: Carlos DNI: 12345678ATeléfono: 699999999
+12345678A;Juan;666666666
