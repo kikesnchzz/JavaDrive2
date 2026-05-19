@@ -1,0 +1,27 @@
+============================================
+===== CONTRATO DE ALQUILER - JAVADRIVE =====
+============================================
+ID RESERVA: 2
+FECHA DE EMISIÓN: 2026-05-19
+---------------------------------------------
+DATOS DEL CLIENTE:
+Nombre: Ana García
+DNI: 12345678A
+Teléfono: 612345678
+----------------------------------------------
+DATOS DEL VEHÍCULO: 
+Marca y Modelo: Seat Ibiza
+Matricula: 1234ABC
+Detalles: Coche: Familiar, 5 plazas
+-----------------------------------------------
+PERIODO DE ALQUILER: 
+Fecha de recogida: 2026-05-19
+Fecha de devolución: 2026-05-19
+Total de días: 0 días
+--------------------------------------------------
+ESTADO: Confirmado y Pendiente de pago
+
+Firma del cliente:            Firma JavaDrive:
+
+____________________          ____________________
+==================================================

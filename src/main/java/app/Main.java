@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static logica.GestorClientes.buscarCliente;
+import static logica.GestorInformes.generarInformeXML;
+import static logica.GestorPersistencia.cargarDatos;
+
 /**
  * @author Enrique
  * @author  Juan Carlos
@@ -32,7 +35,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        GestorInformes.cargarDatos();
+        cargarDatos();
         int opcion;
         do {
             System.out.println("==== MENU ====");
@@ -132,59 +135,5 @@ public class Main {
             }
         } while (opcion != 8) ;
         sc.close();
-    }
-
-
-    /**
-     * Método para generar el informe en xml
-     * @throws IOException
-     */
-    public static void generarInformeXML() throws IOException {
-
-        PrintWriter pw = new PrintWriter(new FileWriter("reporte_completo.xml", false));
-
-        pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        pw.println("<?xml-stylesheet type=\"text/xsl\" href=\"estilo_javadrive.xsl\"?>");
-
-        pw.println("<javadrive>");
-        pw.println("  <empresa>");
-        pw.println("    <nombre>JavaDrive S.L.</nombre>");
-        pw.println("    <ubicacion>Sede Central - Madrid</ubicacion>");
-        pw.println("  </empresa>");
-
-
-        pw.println("  <flota>");
-        for (Vehiculo v : flota) {
-        String tipo;
-            if (v instanceof Coche) {
-                tipo = "Coche";
-            } else {
-                tipo = "Furgoneta";
-            }
-
-            pw.println("    <vehiculo tipo=\"" + tipo + "\">");
-            pw.println("      <matricula>" + v.getMatricula() + "</matricula>");
-            pw.println("      <marca>" + v.getMarca() + "</marca>");
-            pw.println("      <modelo>" + v.getModelo() + "</modelo>");
-            pw.println("      <especifico>" + v.obtenerDetalles() + "</especifico>");
-            pw.println("    </vehiculo>");
-        }
-        pw.println("  </flota>");
-
-
-        pw.println("  <clientes>");
-        for (Cliente c : clientes) {
-            pw.println("    <cliente>");
-            pw.println("      <dni>" + c.getDni() + "</dni>");
-            pw.println("      <nombre>" + c.getNombre() + "</nombre>");
-            pw.println("      <telefono>" + c.getTelefono() + "</telefono>");
-            pw.println("    </cliente>");
-        }
-        pw.println("  </clientes>");
-
-        pw.println("</javadrive>");
-
-
-        pw.close();
     }
 }

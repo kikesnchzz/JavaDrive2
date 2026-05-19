@@ -8,7 +8,7 @@ public abstract class Vehiculo {
     private String matricula;
     private String marca;
     private String modelo;
-    private boolean disponible;
+    public boolean disponible;
 
     public Vehiculo(String matricula, String marca, String modelo, boolean disponible) throws FormatoIncorrectoException {
         if(matricula.length() > 7 || matricula.length() < 7){

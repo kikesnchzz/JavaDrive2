@@ -21,69 +21,10 @@ public class GestorInformes {
     public static PrintWriter pw;
 
     /**
-     * cargamos los datos desde cada documento txt
+     * Cargamos los datos desde cada documento txt
      * @throws IllegalArgumentException
      */
-    public static void cargarDatos() throws IllegalArgumentException {
-            flota.clear();
-            clientes.clear();
 
-        try {
-            // llamamos a un método auxiliar para leer documentos
-            leerDocumento("vehiculos.txt");
-            leerDocumento("clientes.txt");
-        }catch (FileNotFoundException e){
-            System.out.println("Error: El Archivo no se encuentra");
-        }catch (IOException e) {
-            System.out.println("Error: no se puede leer");
-        } catch (NumeroIncorrectoException e) {
-            System.out.println("Error, en el número incorrecto de plazas de coche");
-        } finally {
-            try {
-
-                if(br != null) {
-                    br.close();
-                    System.out.println("Programa cerrado");
-                }
-            }catch (IOException e) {
-                System.out.println("Error: no se puede cerrar");
-
-            }
-
-
-    }
-    }
-
-    /**
-     * Método para guardar todos los datos de los documentos txt
-     */
-    public static void guardarDatos() {
-            try {
-                pw = new PrintWriter(new FileWriter("vehiculos.txt"));
-
-                for (Vehiculo v : flota) {
-                   pw.println(mostrarVehiculos(v));
-                }
-
-                pw.close();
-
-            } catch (IOException e) {
-                System.out.println("Error al guardar datos de los vehículos");
-            }
-            try {
-                pw = new PrintWriter(new FileWriter("clientes.txt"));
-
-                for (Cliente c : clientes) {
-                    pw.println(c.toString());
-                }
-
-                pw.close();
-
-            } catch (IOException e) {
-                System.out.println("Error al guardar datos del cliente");
-            }
-
-    }
 
     /**
      * Método para crear un documento txt con el ticket de una reserva concreta
@@ -148,7 +89,7 @@ public class GestorInformes {
                 tipoCoche tipo = tipoCoche.valueOf(partes[5]);
                 int numPlazas = Integer.parseInt(partes[6]);
                 return new Coche(matricula, marca, modelo, disponible,tipo, numPlazas);
-            }else{
+            }else if(partes[0].equals("FURGONETA")){
                 String matricula = partes[1];
                 String marca =partes[2];
                 String modelo =partes[3];
@@ -184,19 +125,35 @@ public class GestorInformes {
      * @throws NumeroIncorrectoException
      */
     public static void leerDocumento(String ruta) throws IOException, NumeroIncorrectoException {
-        if(ruta.equals("vehiculos.txt")){
-            br = new BufferedReader(new FileReader(ruta));
-            String linea;
-
-            while ((linea = br.readLine()) != null) {
-                flota.add(convierteAVehiculo(linea));
+        if (ruta.equals("vehiculos.txt")) {
+            try (BufferedReader tempBr = new BufferedReader(new FileReader(ruta))) {
+                String linea;
+                while ((linea = tempBr.readLine()) != null) {
+                    // convierteAVehiculo puede lanzar NumeroIncorrectoException (p. ej. plazas inválidas).
+                    // Dejar que esa excepción suba para que cargador la capture (como antes).
+                    Vehiculo v = convierteAVehiculo(linea);
+                    if (v != null) {
+                        flota.add(v);
+                    }
+                }
             }
-        }else if(ruta.equals("clientes.txt")){
-            br = new BufferedReader(new FileReader(ruta));
-            String linea;
-
-            while ((linea = br.readLine()) != null) {
-                clientes.add(convierteACliente(linea));
+        } else if (ruta.equals("clientes.txt")) {
+            try (BufferedReader tempBr = new BufferedReader(new FileReader(ruta))) {
+                String linea;
+                while ((linea = tempBr.readLine()) != null) {
+                    // convierteACliente no declara excepciones checked pero el constructor de Cliente puede
+                    // lanzar FormatoIncorrectoException (Runtime). Capturamos cualquier excepción y
+                    // simplemente omitimos la línea inválida.
+                    try {
+                        Cliente c = convierteACliente(linea);
+                        if (c != null) {
+                            clientes.add(c);
+                        }
+                    } catch (Exception e) {
+                        // Línea inválida → omitimos (podrías registrar si quieres)
+                        System.out.println("Línea de cliente inválida, se omite: " + linea);
+                    }
+                }
             }
         }
     }
@@ -209,12 +166,64 @@ public class GestorInformes {
     public static String mostrarVehiculos(Vehiculo v){
         if(v instanceof Coche){
             Coche c = (Coche) v;
-            return "Coche: " + v.toString() + " " + v.obtenerDetalles();
+            return "Coche: " + c.obtenerDetalles();
         } else if (v instanceof Furgoneta) {
             Furgoneta f = (Furgoneta) v;
-            return "Furgoneta: " + v.toString() + " " + v.obtenerDetalles();
+            return "Furgoneta;" + f.obtenerDetalles();
         }else{
             return " ";
         }
+    }
+    /**
+     * Método para generar el informe en xml
+     * @throws IOException
+     */
+    public static void generarInformeXML() throws IOException {
+
+        PrintWriter pw = new PrintWriter(new FileWriter("reporte_completo.xml", false));
+
+        pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        pw.println("<?xml-stylesheet type=\"text/xsl\" href=\"estilo_javadrive.xsl\"?>");
+
+        pw.println("<javadrive>");
+        pw.println("  <empresa>");
+        pw.println("    <nombre>JavaDrive S.L.</nombre>");
+        pw.println("    <ubicacion>Sede Central - Madrid</ubicacion>");
+        pw.println("  </empresa>");
+
+
+        pw.println("  <flota>");
+        for (Vehiculo v : flota) {
+            String tipo;
+            if (v instanceof Coche) {
+                tipo = "Coche";
+            } else {
+                tipo = "Furgoneta";
+            }
+
+            pw.println("    <vehiculo tipo=\"" + tipo + "\">");
+            pw.println("      <matricula>" + v.getMatricula() + "</matricula>");
+            pw.println("      <marca>" + v.getMarca() + "</marca>");
+            pw.println("      <modelo>" + v.getModelo() + "</modelo>");
+            pw.println("      <especifico>" + v.obtenerDetalles() + "</especifico>");
+            pw.println("    </vehiculo>");
+        }
+        pw.println("  </flota>");
+
+
+        pw.println("  <clientes>");
+        for (Cliente c : clientes) {
+            pw.println("    <cliente>");
+            pw.println("      <dni>" + c.getDni() + "</dni>");
+            pw.println("      <nombre>" + c.getNombre() + "</nombre>");
+            pw.println("      <telefono>" + c.getTelefono() + "</telefono>");
+            pw.println("    </cliente>");
+        }
+        pw.println("  </clientes>");
+
+        pw.println("</javadrive>");
+
+
+        pw.close();
     }
 }

@@ -1,2 +1,0 @@
-COCHE;1111AAA;Seat;Ibiza;true;Deportivo;5
-FURGONETA;2222BBB;Renault;Kangoo;true;false;3
