@@ -85,6 +85,7 @@
                                         </limit>
                                     </limits>
                                     <excludes>
+                                        <exclude>modelo/*</exclude>
                                     <exclude>app/*</exclude>
                                 </excludes>
                                 </rule>
