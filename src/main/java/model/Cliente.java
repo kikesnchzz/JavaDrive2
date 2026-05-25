@@ -10,8 +10,6 @@ public class Cliente {
     private String telefono;
 
     public Cliente(String dni, String nombre, String telefono) throws FormatoIncorrectoException {
-        super();
-
         if(dni.length() != 9){
             throw new FormatoIncorrectoException("Formato incorrecto");
         }

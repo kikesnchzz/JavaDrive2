@@ -11,7 +11,7 @@ public abstract class Vehiculo {
     public boolean disponible;
 
     public Vehiculo(String matricula, String marca, String modelo, boolean disponible) throws FormatoIncorrectoException {
-        if(matricula.length() > 7 || matricula.length() < 7){
+        if(matricula.length() != 7){
             throw new FormatoIncorrectoException("Formato de matricula incorrecto");
         }
 
